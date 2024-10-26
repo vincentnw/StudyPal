@@ -1,0 +1,73 @@
+
+
+
+
+
+
+
+Chapter  1
+
+
+Introduction
+
+
+
+
+These  lecture  notes  cover  the  key  ideas  involved  in  designing  algorithms.  We  shall  see  how they depend on the design of suitable data structures, and how some structures and algorithms are  more  efficient  than  others  for  the  same  task.  We  will  concentrate  on  a  few  basic  tasks, such as storing, sorting and searching data, that underlie much of computer science, but the techniques discussed will be applicable much more generally.
+   We will  start  by studying  some key  data  structures,  such as arrays,  lists,  queues,  stacks and trees, and then move on to explore their use in a range of different searching and sorting algorithms.   This  leads  on  to  the  consideration  of  approaches  for  more  efficient  storage  of data in hash tables.  Finally, we will look at graph based representations and cover the kinds of  algorithms  needed  to  work  efficiently  with  them.    Throughout,  we  will  investigate  the computational efficiency of the algorithms we develop, and gain intuitions about the pros and cons of the various potential approaches for each task.
+   We will not restrict ourselves to implementing the various data structures and algorithms in particular computer programming languages (e.g., Java, C , OCaml), but specify them in simple pseudocode  that can easily be implemented in any appropriate language.
+
+
+1.1    Algorithms  as opposed to programs
+
+An algorithm  for a particular task can be defined as "a finite sequence of instructions,  each of which has a clear meaning and can be performed with a finite amount of effort in a finite length of time".  As such, an algorithm  must be precise enough to be understood by human beings.  However, in order to be executed  by a computer, we will generally need a program that is  written  in  a  rigorous  formal  language;  and  since  computers  are  quite  inflexible  compared to the human mind, programs usually need to contain more details than algorithms.  Here we shall ignore most of those programming details and concentrate on the design of algorithms rather than programs.
+   The  task  of  implementing  the  discussed  algorithms  as  computer  programs  is  important, of course, but these notes will concentrate on the theoretical aspects and leave the practical programming aspects to be studied elsewhere.  Having said that,  we will often find it useful to  write  down  segments  of  actual  programs  in  order  to  clarify  and  test  certain  theoretical aspects of algorithms and their data structures.  It is also worth bearing in mind the distinction between different programming paradigms:  Imperative Programming describes computation in terms of instructions that change the program/data state, whereas Declarative Programming
+specifies what the program should accomplish without describing how to do it.  These notes will primarily be concerned with developing algorithms that map easily onto the imperative programming approach.
+   Algorithms  can obviously  be described in plain English,  and we will sometimes  do that. However, for computer scientists it is usually easier and clearer to use something that comes somewhere  in  between  formatted  English  and  computer  program  code,  but  is  not  runnable because  certain  details  are  omitted.   This  is  called  pseudocode,  which  comes  in  a  variety  of forms.   Often  these  notes  will  present  segments  of  pseudocode  that  are  very  similar  to  the languages we are mainly interested in, namely the overlap of C  and Java, with the advantage that they can easily be inserted into runnable programs.
+
+
+1.2    Fundamental questions  about algorithms
+
+Given an algorithm to solve a particular problem, we are naturally led to ask:
+
+1.  What is it supposed to do?
+
+2.  Does it really do what it is supposed to do?
+
+3.  How efficiently does it do it?
+
+The technical terms normally used for these three aspects are:
+
+1.  Specification.
+
+2.  Verification.
+
+3.  Performance analysis.
+
+The details of these three aspects will usually be rather problem dependent.
+   The  specification  should  formalize  the  crucial  details  of  the  problem  that  the  algorithm is  intended  to  solve.   Sometimes  that  will  be  based  on  a  particular  representation  of  the associated data, and sometimes it will be presented more abstractly.  Typically, it will have to specify how the inputs and outputs of the algorithm are related,  though there is no general requirement that the specification is complete or non-ambiguous.
+   For simple problems, it is often easy to see that a particular algorithm will always work, i.e.  that  it  satisfies  its  specification.   However,  for  more  complicated  specifications  and/or algorithms,  the  fact  that  an  algorithm  satisfies  its  specification  may  not  be  obvious  at  all. In this case, we need to spend some effort verifying  whether the algorithm is indeed correct. In  general,  testing  on  a  few  particular  inputs  can  be  enough  to  show  that  the  algorithm  is incorrect.   However,  since  the  number  of  different  potential  inputs  for  most  algorithms  is infinite in theory, and huge in practice, more than just testing on particular cases is needed to be sure that the algorithm satisfies its specification.  We need correctness proofs.  Although we will discuss proofs in these notes, and useful relevant ideas like invariants, we will usually only do so in a rather informal manner (though,  of course,  we will attempt to be rigorous). The  reason  is  that  we  want  to  concentrate  on  the  data  structures  and  algorithms.   Formal verification techniques are complex and will normally be left till after the basic ideas of these notes have been studied.
+   Finally,  the  efficiency  or  performance  of  an  algorithm  relates  to  the  resources  required by it, such as how quickly it will run,  or how much computer memory it will use.  This will
+usually depend on the problem instance size, the choice of data representation, and the details of the algorithm.  Indeed, this is what normally drives the development of new data structures and algorithms.  We shall study the general ideas concerning efficiency in Chapter 5, and then apply them throughout the remainder of these notes.
+
+
+1.3    Data structures,  abstract  data types, design patterns
+
+For many problems, the ability to formulate an efficient algorithm depends on being able to organize  the  data  in  an  appropriate  manner.   The  term  data  structure  is  used  to  denote  a particular way of organizing data for particular types of operation.  These notes will look at numerous data structures ranging from familiar arrays and lists to more complex structures such as trees, heaps and graphs, and we will see how their choice affects the efficiency of the algorithms based upon them.
+   Often  we  want  to  talk  about  data  structures  without  having  to  worry  about  all  the  im- plementational details associated with particular programming languages, or how the data is stored  in  computer  memory.  We  can  do  this  by  formulating  abstract  mathematical  models of particular classes of data structures or data types which have common features.  These are called abstract data types, and are defined only by the operations that may be performed on them.  Typically, we specify how they are built out of more primitive data types (e.g., integers or strings), how to extract that data from them, and some basic checks to control the flow of processing in algorithms.  The idea that the implementational details are hidden from the user and protected from outside access is known as encapsulation.  We shall see many examples of abstract data types throughout these notes.
+   At  an  even  higher  level  of  abstraction  are  design  patterns  which  describe  the  design  of algorithms,  rather  the  design  of  data  structures.   These  embody  and  generalize  important design  concepts  that  appear  repeatedly  in  many  problem  contexts.  They  provide  a  general structure for algorithms, leaving the details to be added as required for particular problems. These  can  speed  up  the  development  of  algorithms  by  providing  familiar  proven  algorithm structures that can be applied straightforwardly to new problems.  We shall see a number of familiar design patterns throughout these notes.
+
+
+1.4    Textbooks and web-resources
+
+To fully understand data structures and algorithms you will almost certainly need to comple- ment the introductory material in these notes with textbooks or other sources of information. The lectures associated with these notes are designed to help you understand them and fill in some of the gaps they contain, but that is unlikely to be enough because often you will need to see more than one explanation of something before it can be fully understood.
+   There is no single best textbook that will suit everyone.  The subject of these notes is a classical topic, so there is no need to use a textbook published recently.  Books published 10 or 20 years ago are still good, and new good books continue to be published every year.  The reason is that these notes cover important fundamental material that is taught in all university degrees in computer science.  These days there is also a lot of very useful information to be found on the internet, including complete freely-downloadable books.  It is a good idea to go to your library and browse the shelves of books on data structures and algorithms.  If you like any  of  them,  download,  borrow  or  buy  a  copy  for  yourself,  but  make  sure  that  most  of  the
+topics  in  the  above  contents  list  are  covered.  Wikipedia  is  generally  a  good  source  of  fairly reliable  information  on  all  the  relevant  topics,  but  you  hopefully  shouldn't  need  reminding that  not  everything  you  read  on  the  internet  is  necessarily  true.   It  is  also  worth  pointing out  that  there  are  often  many  different  equally-good  ways  to  solve  the  same  task,  different equally-sensible names used for the same thing, and different equally-valid conventions used by  different  people,  so  don't  expect  all  the  sources  of  information  you  find  to  be  an  exact match with each other or with what you find in these notes.
+
+
+1.5    Overview
+
+These  notes  will  cover  the  principal  fundamental  data  structures  and  algorithms  used  in computer science, and bring together a broad range of topics covered elsewhere into a coherent framework.  Data  structures  will  be  formulated  to  represent  various  types  of  information  in such  a  way  that  it  can  be  conveniently  and  efficiently  manipulated  by  the  algorithms  we develop.   Throughout,  the  recurring  practical  issues  of  algorithm  specification,  verification and performance analysis will be discussed.
+   We  shall  begin  by  looking  at  some  widely  used  basic  data  structures  (namely  arrays, linked  lists,  stacks  and  queues),  and  the  advantages  and  disadvantages  of  the  associated abstract  data  types.   Then  we  consider  the  ubiquitous  problem  of  searching,  and  how  that leads  on  to  the  general  ideas  of  computational  efficiency  and  complexity.   That  will  leave us  with  the  necessary  tools  to  study  three  particularly  important  data  structures:  trees  (in particular, binary search trees and heap trees), hash tables, and graphs.  We shall learn how to develop and analyse increasingly efficient algorithms for manipulating and performing useful operations  on  those  structures,  and  look  in  detail  at  developing  efficient  processes  for  data storing,  sorting,  searching and analysis.  The idea is that once the basic ideas and examples covered  in  these  notes  are  understood,  dealing  with  more  complex  problems  in  the  future should be straightforward.
+
+

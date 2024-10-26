@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@layer utilities {
+  .rotate-x-180 {
+    transform: rotateX(180deg);
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .rotate-y-0 {
+    transform: rotateY(0deg);
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .reset-rotate {
+    transform: rotateY(0) scale(1);
+    box-shadow: none;
+  }
+
+  .page-flip-effect {
+    transform-origin: left;
+    /* Flip from the left edge like a book */
+    transition: transform 0.7s ease-in-out;
+  }
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 100ms ease-out;
+}
