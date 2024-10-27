@@ -117,7 +117,7 @@ const LoggedInHome = () => {
                 <p className="text-lg mb-4">Remember: "The only limit to your success is the amount of effort you're willing to put in."</p>
                 <p className="text-lg text-gray-700">Whether you're making notes or preparing quizzes, every step brings you closer to mastery.</p>
             </section>
-            <section className="container mx-auto px-6 py-16">
+            <section className="container mx-auto px-6 py-16 flex-grow">
                 <h2 className="text-4xl font-bold text-center mb-12">Why Use StudyPal?</h2>
                 <div className="flex flex-wrap justify-center">
                     {['Easy Note Generation', 'Flashcards & Quizzes', 'Save Time'].map((feature, idx) => (
