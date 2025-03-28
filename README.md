@@ -26,7 +26,7 @@ Your personal productivity and study companion — designed to help students and
 
 ## 📸 Demo
 
-Live Demo: [🔗 Coming Soon or Add your link here](https://gostudypal.com/)
+Live Demo: [🔗 Live Demo](https://gostudypal.com/)
 
 ---
 
