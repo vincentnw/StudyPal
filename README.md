@@ -4,17 +4,6 @@ Your personal productivity and study companion — designed to help students and
 
 ---
 
-## ✨ Features
-
-- ✅ To-do task management
-- 🕒 Pomodoro timer for focused sessions
-- 📊 Visual progress tracking
-- 🌙 Light/Dark mode toggle
-- 📅 Daily study planning
-- 🎯 Minimal, distraction-free UI
-
----
-
 ## 🛠️ Tech Stack
 
 - **React** – Frontend framework
